@@ -7,7 +7,7 @@ class CoflasyCConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
 
     requires = (
-        "gsl/2.8"
+        "gsl/2.7.1"
     )
     def layout(self):
         cmake_layout(self)
