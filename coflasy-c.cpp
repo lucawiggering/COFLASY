@@ -2047,7 +2047,7 @@ array<double, 18> ode_evolve(void* params, string filename="", string flush="no"
       
 
       /* 
-      calculate alternatice input parameters and print them to terminal
+      calculate alternative input parameters and print them to terminal
       */
       double xitilde1, xitilde2, xitilde3, xitilde_tot;
       xitilde1    = paramtranslate.get_xi_tilde_alpha_from_xi_alpha(xi1);
@@ -2074,7 +2074,7 @@ array<double, 18> ode_evolve(void* params, string filename="", string flush="no"
 
 
 
-      /* ---- set intial conditions ---- */
+      /* ---- set initial conditions ---- */
       /* initial conditions in flavor space */
       complx r_flavor_ini[3][3];
       complx rbar_flavor_ini[3][3];
