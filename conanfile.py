@@ -3,7 +3,7 @@ from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps, cmake_layout
 
 class CoflasyCConan(ConanFile):
     name = "coflasy-c"
-    version = "1.0"
+    version = "0.1"
     settings = "os", "compiler", "build_type", "arch"
 
     requires = (
