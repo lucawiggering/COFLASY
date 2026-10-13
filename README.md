@@ -14,11 +14,26 @@ The C++ code "COFLASY-C" has been developed by Valerie Domcke, Miguel Escudero, 
 | ------ | ----------- |
 | [CMake](https://cmake.org)   | generate the Makefile |
 | [GSL](https://www.gnu.org/software/gsl/) | numerical library for C++ |
+| [Conan](https://conan.io) (optional) | C++ package manager; fetches GSL and builds the code |
 
 
 ## Installation
 
-The Makefile can be generate within the main folder by executing the following:
+### Option 1: Conan (recommended)
+
+With [Conan 2](https://conan.io) installed, the code can be built from the main folder with a single command. Conan fetches the GSL dependency automatically, so it does not need to be installed by hand:
+
+    conan build .
+
+If this is your first time using Conan, create a default profile first with `conan profile detect`. If no prebuilt GSL binary is available for your system, add `--build=missing` so that Conan builds it from source:
+
+    conan build . --build=missing
+
+This creates the executable coflasy-c.exe inside the build/Release directory.
+
+### Option 2: CMake
+
+With GSL installed on your system, the Makefile can be generated within the main folder by executing the following:
 
     cd build
     cmake ..
@@ -33,6 +48,8 @@ This should create the executable coflasy-c.exe inside the build directory.
 
 where the example.ini file contains all initial conditions and its structure should not be changed.
 For more explanation please see the file 'example.ini'. 
+
+The entry `path` in the .ini file sets the location of the COFLASY main folder, from which the input data (data/) is read and to which the results (output/) are written. A relative path is interpreted with respect to the directory the executable is run from; the default `..` works when running from the build directory. When building with Conan, the executable is located in build/Release, so either set `path` to the absolute path of the main folder or use `../..`.
 
 
 ## Contents
