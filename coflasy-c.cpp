@@ -2552,32 +2552,6 @@ int main(int argc, char* argv[]){
       auto start_main = chrono::system_clock::now();
       cout.precision(6);
 
-      /*
-      set the electron density and pressure functions
-      */
-      set_density();
-
-      /*
-      set the Collision interpolation function
-      */
-      set_collision1D();
-      set_collision2D();
-      set_collision2D_me();
-
-      /*
-      set the Transfer rate interpolation function
-      */
-      set_transfer1D();
-      set_transfer2D();
-
-      /*
-      set the weak rates for neutron to proton fraction
-      */
-      set_weakrates1D();
-      set_weakrates2D();
-      set_weakratescorrection();
-
-
       if (argv[1] == NULL){
             cout << "\033[31mYou need to pass at least one argument.\033[39;49m" << endl;
             cout << "exemplary usage: ./coflasy-c.exe ../example.ini" << endl;
@@ -2600,6 +2574,40 @@ int main(int argc, char* argv[]){
                         filename[1] = "yes";
                   }
                   cout << "progressbar will be shown: " << filename[1] << endl;
+                  /* set the global _Path_ from the .ini file (keep the default ".." if empty) */
+                  if (filename[2] != ""){
+                        _Path_ = filename[2];
+                        while (_Path_.size() > 1 && _Path_.back() == '/'){
+                              _Path_.pop_back();
+                        }
+                  }
+                  cout << "path to COFLASY directory: " << _Path_ << endl;
+
+                  /*
+                  set the electron density and pressure functions
+                  */
+                  set_density();
+
+                  /*
+                  set the Collision interpolation function
+                  */
+                  set_collision1D();
+                  set_collision2D();
+                  set_collision2D_me();
+
+                  /*
+                  set the Transfer rate interpolation function
+                  */
+                  set_transfer1D();
+                  set_transfer2D();
+
+                  /*
+                  set the weak rates for neutron to proton fraction
+                  */
+                  set_weakrates1D();
+                  set_weakrates2D();
+                  set_weakratescorrection();
+
                   if (vars[5] == 0){
                         cout << "passed xi_alpha" << endl;
                         xi1= vars[6]; xi2 = vars[7]; xi3 = vars[8];
