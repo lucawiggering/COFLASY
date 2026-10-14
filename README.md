@@ -54,7 +54,7 @@ For more explanation please see the file 'example.ini'.
 
 ## Contents
 
-As of 03/10/2025, the GitHub repository of this code (https://github.com/mariofnavarro/COFLASY/tree/COFLASY-C) consists of the following source files and folders:
+As of 14/10/2026, the GitHub repository of this code (https://github.com/mariofnavarro/COFLASY/tree/COFLASY-C) consists of the following source files and folders:
 
 coflasy-c.cpp: contains the main body of the code.
 
@@ -67,6 +67,8 @@ include: contains auxiliary libraries.
 build: contains the .exe when the code is compiled.
 
 CMakeLists: used to compile the code.
+
+conanfile.py: used to build the code with Conan, which also fetches the GSL dependency.
 
 example.ini: contains all initial conditions, which can be changed by the user.
 
