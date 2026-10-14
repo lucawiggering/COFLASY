@@ -2587,6 +2587,15 @@ int main(int argc, char* argv[]){
                   }
                   cout << "path to COFLASY directory: " << _Path_ << endl;
 
+                  /* check that data/ and output/ exist before loading the data */
+                  for (const std::string folder : {"data", "output"}){
+                    const std::string dir = _Path_ + "/" + folder;
+                    if (!std::filesystem::is_directory(dir)){
+                        std::cerr << "\033[31mError: directory " << dir << " not found.\033[39;49m" << std::endl;
+                        std::exit(_FAIL_);
+                    }
+                  }
+
                   /*
                   set the electron density and pressure functions
                   */
