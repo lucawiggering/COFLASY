@@ -52,9 +52,6 @@ via
 
 For more explanation please see the file 'example.ini'.
 
-The entry `path` in the .ini file sets the location of the COFLASY main folder, from which the input data (data/) is read and to which the results (output/) are written. A relative path is interpreted with respect to the directory the executable is run from; the default `..` works when running from the build directory. When building with Conan, the executable is located in build/Release, so either set `path` to the absolute path of the main folder or use `../..`.
-
-
 ## Contents
 
 As of 03/10/2025, the GitHub repository of this code (https://github.com/mariofnavarro/COFLASY/tree/COFLASY-C) consists of the following source files and folders:
