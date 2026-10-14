@@ -19,19 +19,7 @@ The C++ code "COFLASY-C" has been developed by Valerie Domcke, Miguel Escudero, 
 
 ## Installation
 
-### Option 1: Conan (recommended)
-
-With [Conan 2](https://conan.io) installed, the code can be built from the main folder with a single command. Conan fetches the GSL dependency automatically, so it does not need to be installed by hand:
-
-    conan build .
-
-If this is your first time using Conan, create a default profile first with `conan profile detect`. If no prebuilt GSL binary is available for your system, add `--build=missing` so that Conan builds it from source:
-
-    conan build . --build=missing
-
-This creates the executable coflasy-c.exe inside the build/Release directory.
-
-### Option 2: CMake
+### Option 1: CMake
 
 With GSL installed on your system, the Makefile can be generated within the main folder by executing the following:
 
@@ -41,13 +29,28 @@ With GSL installed on your system, the Makefile can be generated within the main
 
 This should create the executable coflasy-c.exe inside the build directory.
 
+### Option 2: Conan (recommended)
+
+With [Conan 2](https://conan.io) installed, the code can be built from the main folder with a single command. Conan fetches the GSL dependency automatically, so it does not need to be installed by hand:
+
+    conan build .
+
+If this is your first time using Conan, create a default profile first with `conan profile detect`. If no prebuilt GSL binary is available for your system, add `--build=missing` so that Conan builds it from source:
+
+    conan build . --build=missing
+
+Like the CMake build, this creates the executable coflasy-c.exe inside the build directory (Conan's intermediate build files are kept in build/Release).
+
+
 
 ## Exemplary Usage
 
+The example.ini file contains all initial conditions and its structure should not be changed. Its entry `path` sets the location of the COFLASY main folder from which the input data (data/) is read and to which the results (output/) are written. A relative path is interpreted with respect to the directory the executable is run from. This means that the default `path = ..` works when running from the build directory
+via
+
     ./coflasy-c.exe ../example.ini
 
-where the example.ini file contains all initial conditions and its structure should not be changed.
-For more explanation please see the file 'example.ini'. 
+For more explanation please see the file 'example.ini'.
 
 The entry `path` in the .ini file sets the location of the COFLASY main folder, from which the input data (data/) is read and to which the results (output/) are written. A relative path is interpreted with respect to the directory the executable is run from; the default `..` works when running from the build directory. When building with Conan, the executable is located in build/Release, so either set `path` to the absolute path of the main folder or use `../..`.
 
