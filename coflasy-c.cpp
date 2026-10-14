@@ -2561,6 +2561,10 @@ int main(int argc, char* argv[]){
             string arg(argv[1]);
             bool found_ini = arg.find(".ini") != string::npos;
             if (found_ini == true){
+                  if (!std::filesystem::is_regular_file(arg)){
+                        cerr << "\033[31mError: .ini file " << arg << " not found.\033[39;49m" << endl;
+                        return _FAIL_;
+                  }
                   vector<double> vars     = read_ini(argv[1]);
                   double xi1,xi2,xi3;
                   vector<string> filename = read_ini_filename(argv[1]);
